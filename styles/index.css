@@ -531,7 +531,7 @@ a {
 
 .cta__title {
     margin: 0 0 8px;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 25px;
     color: var(--avokadioSplashScreenColor);
 }
