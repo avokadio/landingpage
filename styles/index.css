@@ -518,23 +518,27 @@ a {
     border-radius: 10px;
 }
 .cta__box {
-    background: linear-gradient(135deg, var(--avokadioColor), var(--avokadioGreen));
+    background: linear-gradient(180deg, #ecffde, var(--avokadioGreen));
+    border-width: 1px;
     border-radius: 20px;
-    padding: 26px;
+    padding: 80px 26px;
     box-shadow: var(--shadow);
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
     gap: 20px;
     align-items: center;
+    text-align: center;
 }
 
 .cta__title {
     margin: 0 0 8px;
+    font-weight: normal;
+    font-size: 25px;
+    color: var(--avokadioSplashScreenColor);
 }
 
 .cta__text {
-    margin: 0 0 14px;
-    color: #224;
+    margin: 30px 0;
+    color: var(--avokadioSplashScreenColor);
 }
 
 @media (max-width: 900px) {

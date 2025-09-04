@@ -6,19 +6,38 @@
     <title>Prediyabet Risk Testi</title>
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/risk-test.css">
+    <style>
+        .restart-button {
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            background-color: transparent;
+            color: var(--primary-color);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .restart-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+    </style>
 </head>
 <body>
 <header class="header">
     <div class="container nav" role="navigation">
-        <a class="brand" href="index.html">
+        <a class="brand" href="../index.html">
             <img class="brand__logo" src="../assets/images/avokadio-logo.svg" alt="logo"/>
             <span class="brand__logo__text">Avokadio</span>
         </a>
         <nav>
             <div class="nav__links" id="navLinks">
-                <a class="nav__link" href="index.html#how">Nasıl çalışır?</a>
-                <a class="nav__link" href="index.html#prediabetes">Prediyabet</a>
-                <a class="nav__link" href="index.html#faq">SSS</a>
+                <a class="nav__link" href="../index.html#how">Nasıl çalışır?</a>
+                <a class="nav__link" href="../index.html#prediabetes">Prediyabet</a>
+                <a class="nav__link" href="../index.html#faq">SSS</a>
                 <a class="nav__link" href="risk-test.html">Risk Testi</a>
                 <a class="nav__cta" href="#download">Uygulamayı indir</a>
             </div>
@@ -26,7 +45,7 @@
     </div>
 </header>
 
-<div class="card test-container">
+<div class="card test-container" id="top">
     <h2>Prediyabet Risk Testi</h2>
 
     <div class="step active" data-score="">
@@ -94,6 +113,7 @@
     <div class="step result" id="result">
         <h3>Test Sonucunuz</h3>
         <p id="scoreText"></p>
+        <button id="restartTest" class="restart-button">Testi Tekrarla</button>
     </div>
 
     <div class="info">
@@ -111,7 +131,6 @@
     </div>
 </div>
 
-<!-- Download -->
 <section class="features" id="download">
     <div class="container">
         <div class="card" style="display:grid; gap:16px; align-items:center; grid-template-columns: 1.2fr 1fr;">
@@ -132,7 +151,6 @@
     </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
     <div class="container footer__grid">
         <div>
@@ -148,10 +166,10 @@
         <div>
             <h4>Ürün</h4>
             <ul class="list">
-                <li><a href="#how">Nasıl çalışır?</a></li>
-                <li><a href="#prediabetes">Prediyabet</a></li>
-                <li><a href="#faq">SSS</a></li>
-                <li><a href="#risk">Risk Testi</a></li>
+                <li><a href="../index.html#how">Nasıl çalışır?</a></li>
+                <li><a href="../index.html#prediabetes">Prediyabet</a></li>
+                <li><a href="../index.html#faq">SSS</a></li>
+                <li><a href="#top">Risk Testi</a></li>
             </ul>
         </div>
         <div>
@@ -178,6 +196,22 @@
     let totalScore = 0;
     let gender = null;
 
+    // Testi sıfırlayan yeni fonksiyon
+    function resetTest() {
+        currentStep = 0;
+        totalScore = 0;
+        gender = null;
+        steps.forEach(s => {
+            s.dataset.score = '';
+            const activeButtons = s.querySelectorAll('.options button.active');
+            activeButtons.forEach(btn => btn.classList.remove('active'));
+        });
+        document.getElementById('weight').value = '';
+        document.getElementById('height').value = '';
+        document.getElementById('scoreText').innerHTML = '';
+        showStep(currentStep);
+    }
+
     function showStep(index) {
         steps.forEach((s, i) => s.classList.remove('active'));
         steps[index].classList.add('active');
@@ -189,10 +223,8 @@
             parentOptions.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            // Seçim yapıldıktan sonra 500ms bekle ve sonraki adıma geç
             setTimeout(() => {
                 const score = parseInt(btn.dataset.score);
-                // Sadece bir kez puan eklemek için parent'ın data-score'unu kontrol et
                 if (steps[currentStep].dataset.score === '') {
                     totalScore += score;
                     steps[currentStep].dataset.score = score;
@@ -253,6 +285,9 @@
         currentStep++;
         showStep(currentStep);
     });
+
+    // Yeniden başlama butonuna tıklama olayını ekle
+    document.getElementById('restartTest').addEventListener('click', resetTest);
 
     showStep(currentStep);
 </script>
