@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Prediyabet Risk Testi</title>
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/risk-test.css">
+</head>
+<body>
+<header class="header">
+    <div class="container nav" role="navigation">
+        <a class="brand" href="index.html">
+            <img class="brand__logo" src="../assets/images/avokadio-logo.svg" alt="logo"/>
+            <span class="brand__logo__text">Avokadio</span>
+        </a>
+        <nav>
+            <div class="nav__links" id="navLinks">
+                <a class="nav__link" href="index.html#how">Nasıl çalışır?</a>
+                <a class="nav__link" href="index.html#prediabetes">Prediyabet</a>
+                <a class="nav__link" href="index.html#faq">SSS</a>
+                <a class="nav__link" href="risk-test.html">Risk Testi</a>
+                <a class="nav__cta" href="#download">Uygulamayı indir</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="card test-container">
+    <h2>Prediyabet Risk Testi</h2>
+
+    <div class="step active" data-score="">
+        <p class="question">1. Kaç Yaşındasınız?</p>
+        <div class="options">
+            <button data-score="0">40'dan küçük</button>
+            <button data-score="1">40-49</button>
+            <button data-score="2">50-59</button>
+            <button data-score="3">60+</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">2. Cinsiyetiniz?</p>
+        <div class="options">
+            <button data-score="1" data-gender="male">Erkek</button>
+            <button data-score="0" data-gender="female">Kadın</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="" data-conditional="female">
+        <p class="question">3. Daha önce hamilelik diyabet tanısı kondu mu?</p>
+        <div class="options">
+            <button data-score="1">Evet</button>
+            <button data-score="0">Hayır</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">4. Ailede diyabet var mı?</p>
+        <div class="options">
+            <button data-score="1">Evet</button>
+            <button data-score="0">Hayır</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">5. Daha önce yüksek tansiyon tanısı kondu mu?</p>
+        <div class="options">
+            <button data-score="1">Evet</button>
+            <button data-score="0">Hayır</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">6. Fiziksel olarak aktif misiniz?</p>
+        <div class="options">
+            <button data-score="0">Evet</button>
+            <button data-score="1">Hayır</button>
+        </div>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">7. Kaç Kilosunuz?</p>
+        <input type="number" id="weight" placeholder="Kilo (kg)">
+        <button id="nextWeight" class="next-button">Devam</button>
+    </div>
+
+    <div class="step" data-score="">
+        <p class="question">8. Boyunuz Kaç?</p>
+        <input type="number" id="height" placeholder="Boy (cm)">
+        <button id="finish" class="finish-button">Sonucu Gör</button>
+    </div>
+
+    <div class="step result" id="result">
+        <h3>Test Sonucunuz</h3>
+        <p id="scoreText"></p>
+    </div>
+
+    <div class="info">
+        <p class="light__text">Toplam Puanınız 5 ve üzeriyse Tip 2 Diayebet için yüksek risk taşıyorsunuz.
+            Ancak diyabet yada prediyabet olduğunuzu doktorunuz söyleyebilir.
+            Düzenli takibinizi yapan bir doktorunuz varsa kontrollerinizi aksatmadan
+            devam etmelisiniz. </p>
+        <h3 class="text__title"> Riskinizi Azaltın</h3>
+        <p class="light__text">
+            Testin sonucu Tip 2 Diyabet riski taşıdığınızı gösterebilir. Hayatınızda
+            yapacağınız küçük değişiklikler ile bu riski azaltabilirsiniz. Avokadio programı
+            ile sağlıklı beslenme tercihleri yaparak ve fiziksel aktivitenizi artırarak
+            sağlığınız ve hayatınız için önemli bir adım atmış olabilirsiniz.
+        </p>
+    </div>
+</div>
+
+<!-- Download -->
+<section class="features" id="download">
+    <div class="container">
+        <div class="card" style="display:grid; gap:16px; align-items:center; grid-template-columns: 1.2fr 1fr;">
+            <div>
+                <h3>Uygulamamızı indirin, sağlıklı yaşamaya başlayın</h3>
+                <p style="color:var(--muted);">Avokadio AI, herkes için benzersiz bir yol haritası çıkarır. Sizin
+                    metabolizmanıza uygun beslenmeyi birlikte keşfedelim.</p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a target="_blank" href="https://apps.apple.com/tr/app/avokadio/id1579426778"><span class="badge"> App Store</span></a>
+                    <a target="_blank"
+                       href="https://play.google.com/store/apps/details?id=com.avokadio&pcampaignid=web_share"><span
+                            class="badge">▶︎ Google Play</span></a>
+                </div>
+            </div>
+            <img class="photo__style" src="../assets/images/app_image_2.png"
+                 alt="Sağlıklı beslenme illüstrasyonu">
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__grid">
+        <div>
+            <div class="brand" style="margin-bottom:8px;">
+                <a class="brand" href="#top">
+                    <img class="brand__logo" src="../assets/images/avokadio-logo.svg" alt="logo"/>
+                    <span class="brand__logo__text">Avokadio</span>
+                </a>
+            </div>
+            <p style="color:var(--muted); max-width:48ch;">Prediyabet ve beslenmede kişiselleştirilmiş yapay zekâ koçu.
+                Sürdürülebilir küçük adımlarla büyük sonuçlar.</p>
+        </div>
+        <div>
+            <h4>Ürün</h4>
+            <ul class="list">
+                <li><a href="#how">Nasıl çalışır?</a></li>
+                <li><a href="#prediabetes">Prediyabet</a></li>
+                <li><a href="#faq">SSS</a></li>
+                <li><a href="#risk">Risk Testi</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Kaynaklar</h4>
+            <ul class="list">
+                <li><a href="#">Klinik çalışma</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Gizlilik</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>İletişim</h4>
+            <ul class="list">
+                <li><a href="mailto:hello@avokadio.ai">hello@avokadio.ai</a></li>
+                <li><a href="https://www.linkedin.com/company/avokadio/">LinkedIn</a></li>
+                <li><a href="#">X (Twitter)</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+    let totalScore = 0;
+    let gender = null;
+
+    function showStep(index) {
+        steps.forEach((s, i) => s.classList.remove('active'));
+        steps[index].classList.add('active');
+    }
+
+    document.querySelectorAll('.options button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const parentOptions = btn.closest('.options');
+            parentOptions.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Seçim yapıldıktan sonra 500ms bekle ve sonraki adıma geç
+            setTimeout(() => {
+                const score = parseInt(btn.dataset.score);
+                // Sadece bir kez puan eklemek için parent'ın data-score'unu kontrol et
+                if (steps[currentStep].dataset.score === '') {
+                    totalScore += score;
+                    steps[currentStep].dataset.score = score;
+                }
+
+                if (btn.dataset.gender) gender = btn.dataset.gender;
+
+                if (steps[currentStep + 1]?.dataset.conditional === 'female' && gender !== 'female') {
+                    currentStep += 2;
+                } else {
+                    currentStep++;
+                }
+
+                showStep(currentStep);
+            }, 500);
+        });
+    });
+
+    document.getElementById('nextWeight').addEventListener('click', () => {
+        const weight = parseFloat(document.getElementById('weight').value);
+        if (!weight || weight <= 0) {
+            return alert("Lütfen geçerli bir kilonuzu girin.");
+        }
+        currentStep++;
+        showStep(currentStep);
+    });
+
+    document.getElementById('finish').addEventListener('click', () => {
+        const height = parseFloat(document.getElementById('height').value);
+        const weight = parseFloat(document.getElementById('weight').value);
+        if (!height || height <= 0 || !weight || weight <= 0) {
+            return alert("Lütfen geçerli boy ve kilonuzu girin.");
+        }
+
+        const bmi = weight / Math.pow(height / 100, 2);
+        if (bmi >= 25) totalScore += 1;
+        if (bmi >= 30) totalScore += 2;
+
+        let message = "";
+        let riskLevel = "";
+        if (totalScore < 5) {
+            message = "Tebrikler! Düşük risk grubundasınız. Sağlıklı yaşam tarzınızı sürdürün.";
+            riskLevel = "Düşük Risk 🟢";
+        } else if (totalScore < 9) {
+            message = "Orta risk grubundasınız. Yaşam tarzı değişiklikleri yapmanız sağlığınız için faydalı olabilir.";
+            riskLevel = "Orta Risk 🟡";
+        } else {
+            message = "Yüksek risk grubundasınız. Doktorunuza danışarak detaylı bir kontrolden geçmeniz önerilir.";
+            riskLevel = "Yüksek Risk 🔴";
+        }
+
+        document.getElementById('scoreText').innerHTML = `
+                <p>Skorunuz: <strong>${totalScore}</strong></p>
+                <p>${riskLevel}</p>
+                <p>${message}</p>
+            `;
+
+        currentStep++;
+        showStep(currentStep);
+    });
+
+    showStep(currentStep);
+</script>
+</body>
+</html>
