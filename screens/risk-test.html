@@ -27,23 +27,47 @@
     </style>
 </head>
 <body>
+<!-- Header / Nav -->
 <header class="header">
     <div class="container nav" role="navigation">
-        <a class="brand" href="../index.html">
+        <a class="brand" href="#top">
             <img class="brand__logo" src="../assets/images/avokadio-logo.svg" alt="logo"/>
             <span class="brand__logo__text">Avokadio</span>
         </a>
+
+        <!-- Yatay menü (sadece desktop için) -->
         <nav>
             <div class="nav__links" id="navLinks">
                 <a class="nav__link" href="../index.html#how">Nasıl çalışır?</a>
                 <a class="nav__link" href="../index.html#prediabetes">Prediyabet</a>
                 <a class="nav__link" href="../index.html#faq">SSS</a>
-                <a class="nav__link" href="risk-test.html">Risk Testi</a>
+                <a class="nav__link" href="#top">Risk Testi</a>
                 <a class="nav__cta" href="#download">Uygulamayı indir</a>
             </div>
         </nav>
+
+        <!-- Burger (sadece mobil için) -->
+        <button class="burger" id="burger" aria-label="Menü aç/kapat" aria-expanded="false">
+            <span class="burger__bar"></span>
+            <span class="burger__bar"></span>
+            <span class="burger__bar"></span>
+        </button>
     </div>
 </header>
+
+<!-- Sidebar (sadece mobilde açılacak) -->
+<aside class="sidebar" id="sidebar">
+    <nav class="sidebar__nav">
+        <a class="nav__link" href="../index.html#how">Nasıl çalışır?</a>
+        <a class="nav__link" href="../index.html#prediabetes">Prediyabet</a>
+        <a class="nav__link" href="../index.html#faq">SSS</a>
+        <a class="nav__link" href="#top">Risk Testi</a>
+        <a class="nav__cta" href="#download">Uygulamayı indir</a>
+    </nav>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
 
 <div class="card test-container" id="top">
     <h2>Prediyabet Risk Testi</h2>
@@ -191,6 +215,34 @@
     </div>
 </footer>
 <script>
+
+    const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    // Menü aç/kapat
+    burger.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('is-open');
+        overlay.classList.toggle('is-active', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Sidebar dışına tıklayınca kapat
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('is-open');
+        overlay.classList.remove('is-active');
+        burger.setAttribute('aria-expanded', 'false');
+    });
+
+    // Menüde linke tıklanınca kapat
+    document.querySelectorAll('.sidebar__nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.remove('is-open');
+            overlay.classList.remove('is-active');
+            burger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
     const steps = document.querySelectorAll('.step');
     let currentStep = 0;
     let totalScore = 0;
