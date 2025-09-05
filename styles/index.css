@@ -293,7 +293,7 @@ a {
 
 .features__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
@@ -347,6 +347,16 @@ a {
 .photo__style{
     border-radius: 10px;
 }
+
+@media (max-width: 600px) {
+    .photo{
+        margin: 20px 2vh;
+    }
+    .photo__style{
+        border-radius: 10px;
+    }
+}
+
 /* =====================
    Nasıl Çalışır – 3 Adım
    ===================== */
@@ -484,15 +494,17 @@ a {
 .accordion__button {
     width: 100%;
     text-align: left;
-    padding: 16px 18px;
+    padding: 18px 18px;
     border: 0;
     background: #fff;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 10px;
     align-items: center;
-    font-weight: 600;
+    font-weight: 300;
     cursor: pointer;
+    color: #1b1b1b;
+    text-decoration: none;
 }
 
 .accordion__content {
@@ -504,6 +516,7 @@ a {
 
 .accordion__content-inner {
     padding: 0 0 18px;
+    font-size: 14px;
     color: var(--muted);
 }
 
